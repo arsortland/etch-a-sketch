@@ -1,0 +1,21 @@
+.grids{
+    display: flex;
+    background-color: blue;
+    width: 960px;
+    height: 960px;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.grid{
+    flex: 1;
+    display: flex;
+    height: 0;
+    width: 20%;
+    padding-bottom: 20%;
+
+}
+
+.grid:hover{
+    background-color: white;
+}
