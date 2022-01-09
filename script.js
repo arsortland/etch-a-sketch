@@ -7,13 +7,16 @@ function createGrid(n){
         grids.appendChild(grid.cloneNode());
     }
 }
-//can make an if "click" is true then do the function. In order to have a press and relase tpye of drawing.
+
 function hoverFunction(){
-    selectAllGrids.forEach(item => {
-        item.addEventListener('mouseover', () =>{
-            item.style.backgroundColor = colorpicker.value;  
-        })
-    });
+        selectAllGrids.forEach(item => {
+            item.addEventListener('mouseover', () =>{
+                if (isMouseDown ===true){
+                    item.style.backgroundColor = colorpicker.value; 
+                }
+
+            })
+        });
 }
 
 //Selectors:
@@ -39,11 +42,22 @@ mySlider.oninput = () => slidetext.textContent = mySlider.value+"x"+mySlider.val
 //Colorpicker:
 const colorpicker = document.querySelector('#colorpicker');
 
-//Programflow:
+
+//Initiering:
 createGrid(mySlider.value);
 mySlider.addEventListener('mouseup', () => createGrid(mySlider.value));
 const selectAllGrids = document.querySelectorAll('.grid');
 hoverFunction();
+//Hold/hover functionality.
+let isMouseDown = false;
+window.addEventListener('mousedown', () => isMouseDown =true);
+//window.addEventListener('mouseup', () => isMouseDown = false);
+const hover = document.querySelector('.hover');
+hover.addEventListener('click', () => isMouseDown = true);
+const hold = document.querySelector('.hold');
+hold.addEventListener('click', () => isMouseDown = false);
+//Random color:
+const random = document.querySelector('.random');
+random.addEventListener('click', () => colorpicker.value = "#" + Math.floor(Math.random()*16777215).toString(16));
 
-//TODO
-//also: ERASER (aka white color!)
+//gradient colorschemes and design/CSS left!
