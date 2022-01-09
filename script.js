@@ -87,4 +87,3 @@ let greyToBlack = false;
 const greyblack = document.querySelector('.greyblack');
 greyblack.addEventListener('click', () => greyToBlack = true);
 
-//gradient colorschemes and design/CSS left!

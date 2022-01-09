@@ -10,21 +10,25 @@
 </head>
 <body>
     <h1>Etch-a-sketch</h1>
+    <h2>UNLEASH YOUR CREATIVITY!</h2>
         <div class="grids" id="rowcol"></div>
-        <div class="slidecontainer">
-            <span class="slidetext"></span>
-            <input type="range" min="1" max="100" value="16" class="slider" id="mySlider">
+        <div class="bottomcontainer">
+            <div class="slidecontainer">
+                <span class="slidetext"></span>
+                <input type="range" min="1" max="100" value="16" class="slider" id="mySlider">
+            </div>
+            <div class="colorpicker">
+                <label for="colorpicker">Choose your color:</label>
+                <input type="color" id="colorpicker" value="#000000">
+            </div>
+            <button class="hover">Hover to draw</button>
+            <button class="hold">Hold to draw</button>
+            <button class="random">Random color</button>
+            <button class="rainbow">Rainbow</button>
+            <button class="greyblack">Gradient black</button>
+            <button class="eraser">Eraser</button>
+            <button id="clear">Clear</button>
         </div>
-        <div class="colorpicker">
-            <label for="colorpicker">Choose color!</label>
-            <input type="color" id="colorpicker" value="#000000">
-        </div>
-        <button class="eraser">Eraser</button>
-        <button id="clear">Clear</button>
-        <button class="hover">hover to draw</button>
-        <button class="hold">hold to draw</button>
-        <button class="random">random color</button>
-        <button class="rainbow">Rainbow</button>
-        <button class="greyblack">Gradient black</button>
+
 </body>
 </html>
