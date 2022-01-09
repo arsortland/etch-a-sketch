@@ -7,14 +7,30 @@ function createGrid(n){
         grids.appendChild(grid.cloneNode());
     }
 }
-
 function hoverFunction(){
         selectAllGrids.forEach(item => {
             item.addEventListener('mouseover', () =>{
-                if (isMouseDown ===true){
-                    item.style.backgroundColor = colorpicker.value; 
+                if (isMouseDown === true){
+                    if (colorsEverywhere === true){
+                        item.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+                        document.querySelectorAll('.eraser, .random, .greyblack, #colorpicker').forEach(btn =>{
+                            btn.addEventListener('click', () => {
+                                colorsEverywhere = false;
+                            })
+                        });
+                        
+                    }if (greyToBlack === true){
+                        item.style.backgroundColor = "black";
+                        item.style.opacity = (parseFloat(item.style.opacity) || 0) + 0.1;
+                        document.querySelectorAll('.eraser, .random, .rainbow, #colorpicker').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                greyToBlack = false;
+                            })
+                        }); 
+                    }if (colorsEverywhere === false && greyToBlack === false){
+                        item.style.backgroundColor = colorpicker.value;
+                    }
                 }
-
             })
         });
 }
@@ -24,6 +40,7 @@ const grid = document.createElement('div');
 grid.classList.add('grid');
 const grids = document.querySelector('.grids');
 const rowcol = document.getElementById("rowcol");
+const body = document.querySelector('body');
 
 //clear key:
 const clear = document.querySelector('#clear');
@@ -48,16 +65,26 @@ createGrid(mySlider.value);
 mySlider.addEventListener('mouseup', () => createGrid(mySlider.value));
 const selectAllGrids = document.querySelectorAll('.grid');
 hoverFunction();
+
 //Hold/hover functionality.
 let isMouseDown = false;
 window.addEventListener('mousedown', () => isMouseDown =true);
-//window.addEventListener('mouseup', () => isMouseDown = false);
+window.addEventListener('mouseup', () => isMouseDown = false);
 const hover = document.querySelector('.hover');
 hover.addEventListener('click', () => isMouseDown = true);
 const hold = document.querySelector('.hold');
 hold.addEventListener('click', () => isMouseDown = false);
+
 //Random color:
 const random = document.querySelector('.random');
 random.addEventListener('click', () => colorpicker.value = "#" + Math.floor(Math.random()*16777215).toString(16));
+//rainbowcolors:
+let colorsEverywhere = false;
+const rainbow = document.querySelector('.rainbow');
+rainbow.addEventListener('click', () => colorsEverywhere = true);
+//gradient black:
+let greyToBlack = false;
+const greyblack = document.querySelector('.greyblack');
+greyblack.addEventListener('click', () => greyToBlack = true);
 
 //gradient colorschemes and design/CSS left!
