@@ -1,27 +1,25 @@
 
-
-body{
-    height: 50%;
-}
-
-.sizeme{
-    height: 960px;
-    width: 960px;
-}
-
 .grids{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: blue;
-    height: 100%;
+    display:grid;
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(64,1fr);
+    grid-template-rows: repeat(64,1fr); 
+    border-style: ridge;
+    border-width: 10px;
+    border-color: brown;
+}
+
+.grid, .hovdiv{
+    
+}
+
+.hovdiv{  
+    background-color: red;
 }
 
 .grid{
-    width: 25%;
-    height: 25%;
     background-color: green;
-}
-
-.hovdiv{
-    background-color: red;
 }
